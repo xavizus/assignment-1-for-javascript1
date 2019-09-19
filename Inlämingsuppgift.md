@@ -4,7 +4,7 @@
 - [ ] Skriv en fungerande Quiz-applikation. Visa på sidan hur många frågor som är besvarade.
 - [ ] Låt användaren bestämma hur många frågor som ska visas.
 - [ ] Skriv klassen Quiz. Den ska hålla reda på användarens namn, frågorna som ingår och hur många frågor som har besvarats korrekt/felaktigt.
-- [ ] Skriv klassen Question. Den ska hålla reda på frågekategori, fråga, svarsalternativ och om svarsalternativet är korrekt eller inte. (Hur kan vi lösa det?)
+- [x] Skriv klassen Question. Den ska hålla reda på frågekategori, fråga, svarsalternativ och om svarsalternativet är korrekt eller inte. (Hur kan vi lösa det?)
 - [ ] Lämna in projektet som ett git-repo.
 
 **För Väl Godkänt:**
