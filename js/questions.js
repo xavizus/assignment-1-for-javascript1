@@ -1,3 +1,11 @@
+/*
+    I had to rethink the idea to serve the questionsData as a JSON-file.
+    The reason is that I the assignment does not involve a server (for example live-server or an actual server).
+    Therefore the fetch-method is not possible to use to read a file localy because of limitation of the browsers. (For security reasons).
+    
+    The only feasible solution that I know of today, were to create a javascript-file and add the content as an object.
+*/
+
 let questionsData = {
         "categories": {
             "bräd och kortspel": [
