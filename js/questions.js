@@ -6,6 +6,15 @@
     The only feasible solution that I know of today, were to create a javascript-file and add the content as an object.
 */
 
+/**
+ * I just realised... I could use JSON-file, and serve it like I do with this file.
+ * <script src="questionsJSON.json"></script>
+ * And then access that file with:
+ * let questions = JSON.parse(questionsJSON);
+ * 
+ * Though, I belive I will go with the solution I already got, besauce it's possible to comment in a .js file, while JSON file it aint possible to comment in
+ */
+
 let questionsData = {
         "categories": {
             "bräd och kortspel": [
