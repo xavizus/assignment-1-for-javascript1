@@ -6,27 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/questions.js"></script>
+    <script src="./js/Question.js"></script>
+    <script src="./js/Quiz.js"></script>
+    <script src="./js/main.js"></script>
     <title>Quiz-Application</title>
 </head>
 
 <body>
-<div class="container">
-    <div class="header">
-        <h1>Welcome to the Game!</h1>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to the Game!</h1>
+        </div>
 
-    <div class="content">
-        <p>Test paragraph</p>
-    </div>
+        <div class="content">
+            <div class="currentQuestion">
+                <div class="question">
+                    <p>Test fråga</p>
+                </div>
+            </div>
+            <div class="answers">
+                <table class="center">
+                    <tr>
+                        <td><input type="radio" name="answers" id="1" value=""></td>
+                        <td><label for="1">1.</label></td>
+                        <td><label for="1" id="answer-1" class="answer">Test 1</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="answers" id="2" value=""></td>
+                        <td><label for="2">X.</label></td>
+                        <td><label for="2" id="answer-2" class="answer">Test 2</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="answers" id="3" value=""></td>
+                        <td><label for="3">2.</label></td>
+                        <td><label for="3" id="answer-3" class="answer">Test 3</label></td>
+                    </tr>
+                </table>
+            </div>
+            <p>Test paragraph</p>
+        </div>
 
-    <div class="sidebox">
-        <p>sidebox</p>
-    </div>
+        <div class="sidebox">
+            <p>sidebox</p>
+        </div>
 
-    <div class="footer">
-        <p>&copy; Skapad av Stephan Ljungros</p>
+        <div class="footer">
+            <p>&copy; Skapad av Stephan Ljungros</p>
+        </div>
     </div>
-</div>
 </body>
 
 </html>

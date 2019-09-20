@@ -69,3 +69,28 @@ body {
          "footer";
     }
 }
+
+/*
+|---------------
+|= Content
+|---------------
+*/
+
+.answers {
+    margin:0px auto 0px;
+    float: none;
+}
+
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.question {
+    font-weight: bold;
+    font-size: 1.3em
+}
+
+.answer {
+    font-weight: bold;
+}
