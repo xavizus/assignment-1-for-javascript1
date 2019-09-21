@@ -1,0 +1,129 @@
+{
+    "extension": "linecount",
+    "version": "0.1.7",
+    "workspace": "d:\\Programmering\\Nackademin\\Assignment-1-for-JavaScript1",
+    "linecount": [
+        {
+            "version": "0.1.7",
+            "counttime": "2019-09-21 21:00:09",
+            "filesum": 9,
+            "codesum": 500,
+            "commentsum": 72,
+            "blanksum": 156,
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "assignment-1-for-JavaScript1.code-workspace"
+                },
+                {
+                    "blank": 34,
+                    "code": 118,
+                    "comment": 41,
+                    "filename": "css\\styles.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "images\\arrow.svg"
+                },
+                {
+                    "blank": 8,
+                    "code": 71,
+                    "comment": 2,
+                    "filename": "index.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "Inlämingsuppgift.md"
+                },
+                {
+                    "blank": 47,
+                    "code": 67,
+                    "comment": 2,
+                    "filename": "js\\main.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "js\\Question.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 64,
+                    "comment": 15,
+                    "filename": "js\\questions.js"
+                },
+                {
+                    "blank": 38,
+                    "code": 124,
+                    "comment": 12,
+                    "filename": "js\\Quiz.js"
+                }
+            ]
+        },
+        {
+            "version": "0.1.7",
+            "counttime": "2019-09-21 21:05:15",
+            "filesum": 8,
+            "codesum": 490,
+            "commentsum": 72,
+            "blanksum": 156,
+            "filelist": [
+                {
+                    "blank": 34,
+                    "code": 118,
+                    "comment": 41,
+                    "filename": "css\\styles.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "images\\arrow.svg"
+                },
+                {
+                    "blank": 8,
+                    "code": 71,
+                    "comment": 2,
+                    "filename": "index.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "Inlämingsuppgift.md"
+                },
+                {
+                    "blank": 47,
+                    "code": 67,
+                    "comment": 2,
+                    "filename": "js\\main.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "js\\Question.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 64,
+                    "comment": 15,
+                    "filename": "js\\questions.js"
+                },
+                {
+                    "blank": 38,
+                    "code": 124,
+                    "comment": 12,
+                    "filename": "js\\Quiz.js"
+                }
+            ]
+        }
+    ]
+}

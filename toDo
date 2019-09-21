@@ -1,0 +1,4 @@
+2019-09-21:
+    ☐ Need to change behaviour of showing each question. \ 
+    When a user have checked a radio, and then change question and change back to previous question, that radio button need to be checked.
+    File Quiz.js Line 104

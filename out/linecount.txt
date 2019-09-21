@@ -1,0 +1,41 @@
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2019-09-21 21:00:09
+count workspace : d:\Programmering\Nackademin\Assignment-1-for-JavaScript1
+total files : 9
+total code lines : 500
+total comment lines : 72
+total blank lines : 156
+
+assignment-1-for-JavaScript1.code-workspace, code is 10, comment is 0, blank is 0.
+css\styles.css, code is 118, comment is 41, blank is 34.
+images\arrow.svg, code is 3, comment is 0, blank is 1.
+index.html, code is 71, comment is 2, blank is 8.
+Inlämingsuppgift.md, code is 21, comment is 0, blank is 5.
+js\main.js, code is 67, comment is 2, blank is 47.
+js\Question.js, code is 22, comment is 0, blank is 12.
+js\questions.js, code is 64, comment is 15, blank is 11.
+js\Quiz.js, code is 124, comment is 12, blank is 38.
+===============================================================================
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2019-09-21 21:05:15
+count workspace : d:\Programmering\Nackademin\Assignment-1-for-JavaScript1
+total files : 8
+total code lines : 490
+total comment lines : 72
+total blank lines : 156
+
+css\styles.css, code is 118, comment is 41, blank is 34.
+images\arrow.svg, code is 3, comment is 0, blank is 1.
+index.html, code is 71, comment is 2, blank is 8.
+Inlämingsuppgift.md, code is 21, comment is 0, blank is 5.
+js\main.js, code is 67, comment is 2, blank is 47.
+js\Question.js, code is 22, comment is 0, blank is 12.
+js\questions.js, code is 64, comment is 15, blank is 11.
+js\Quiz.js, code is 124, comment is 12, blank is 38.
+===============================================================================
