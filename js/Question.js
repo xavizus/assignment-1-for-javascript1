@@ -2,7 +2,7 @@ class Question {
 
     constructor(addedCategory, addedQuestion, addedFalseAnswers, addedCorrectAnswer) {
 
-        if(!Array.isArray(addedFalseAnswers)) {
+        if (!Array.isArray(addedFalseAnswers)) {
             return ("addedFalseAnswers must be an array!");
         }
         this.falseAnswers = addedFalseAnswers;
@@ -17,11 +17,10 @@ class Question {
     }
 
 
-    checkIfanswerIsCorrect(answer){
-        if(this.correctAnswer === answer) {
+    checkIfanswerIsCorrect(answer) {
+        if (this.correctAnswer === answer) {
             this.isCorrectAnswerdFromUser = true;
-        }
-        else {
+        } else {
             this.isCorrectAnswerdFromUser = false;
         }
 

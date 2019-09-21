@@ -1,4 +1,3 @@
-
 function getElementsValues(elements) {
 
     try {
@@ -36,7 +35,7 @@ function isElementsValueEmpty(elements) {
 
     let results = getElementsValues(elements);
 
-    if(results === false) {
+    if (results === false) {
 
         return false;
 
@@ -56,20 +55,19 @@ function isElementsValueEmpty(elements) {
 
 }
 
-function toggleHideShowElements(elements, hideClass = "hide", showClass="show") {
+function toggleHideShowElements(elements, hideClass = "hide", showClass = "show") {
 
     elements = Array.from(elements);
 
-    for(let element of elements) {
+    for (let element of elements) {
 
-        if(element.classList.contains("hide")) {
+        if (element.classList.contains("hide")) {
 
             document.getElementById(element.id).classList.remove(hideClass);
 
             document.getElementById(element.id).classList.add(showClass);
 
-        }
-        else {
+        } else {
 
             document.getElementById(element.id).classList.add(hideClass);
 
@@ -83,26 +81,26 @@ function toggleHideShowElements(elements, hideClass = "hide", showClass="show") 
 
 function addQuestionProgressBoxes(questions) {
 
-    for(let index in questions) {
+    for (let index in questions) {
         let questionProgress = document.createElement("input");
-        questionProgress.setAttribute("type","checkbox");
-        questionProgress.setAttribute("name","questionOverview");
-        questionProgress.setAttribute("id",`question-${index}`);
-        questionProgress.setAttribute("value",index);
-        questionProgress.setAttribute("disabled","");
+        questionProgress.setAttribute("type", "checkbox");
+        questionProgress.setAttribute("name", "questionOverview");
+        questionProgress.setAttribute("id", `question-${index}`);
+        questionProgress.setAttribute("value", index);
+        questionProgress.setAttribute("disabled", "");
         document.getElementById("questionsOverview").append(questionProgress);
     }
 
 }
 
-function randomNumberBetweenTwoValues(min,max) {
-    return Math.floor(Math.random() * (max - min +1) +  min);    
+function randomNumberBetweenTwoValues(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function viewQuestion(questionData) {
     document.getElementById("quiz__form").innerHTML = "";
-    let randomizeAnswersOrder = randomNumberBetweenTwoValues(0,2);
-    questionData.falseAnswers.splice(randomizeAnswersOrder,0,questionData.correctAnswer);
+    let randomizeAnswersOrder = randomNumberBetweenTwoValues(0, 2);
+    questionData.falseAnswers.splice(randomizeAnswersOrder, 0, questionData.correctAnswer);
     document.getElementById("quiz__form").insertAdjacentHTML('beforeend',
         `<div class="question">
         <p>${questionData.question}</p>
@@ -141,8 +139,8 @@ function startQuiz(startFormElements) {
     toggleHideShowElements(contentToChange);
 
     addQuestionProgressBoxes(quiz.questions);
-    
-    document.getElementById("countOverview").textContent =`${quiz.getTotalAnsweredQuestions()} / ${quiz.getTotalQuestions()} frågor`;
+
+    document.getElementById("countOverview").textContent = `${quiz.getTotalAnsweredQuestions()} / ${quiz.getTotalQuestions()} frågor`;
 
     viewQuestion(quiz.questions[currentQuestionIndex]);
 
@@ -164,8 +162,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById("quizGame").addEventListener("click", (event) => {
-        if(event.target.className === 'answers') {
-            
+        if (event.target.className === 'answers') {
+
         }
     });
 
