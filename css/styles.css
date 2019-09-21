@@ -12,6 +12,10 @@ body {
     font:13px Yanone Kaffeesatz,arial,helvetica,sans-serif;
 }
 
+td {
+    text-align: left;
+}
+
 /*
 |------------
 |= Grid template
@@ -105,7 +109,6 @@ table.center {
 .answer {
     font-weight: bold;
 }
-
 
 /*
 |-------------

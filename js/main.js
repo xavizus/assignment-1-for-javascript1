@@ -81,17 +81,9 @@ function toggleHideShowElements(elements, hideClass = "hide", showClass="show") 
 
 }
 
-function startQuiz(startFormElements) {
+function addQuestionProgressBoxes(questions) {
 
-    let [userName, numberOfQuestions] = getElementsValues(startFormElements);
-
-    let quiz = new Quiz(userName, numberOfQuestions);
-
-    let contentToChange = document.getElementsByClassName("quizContent");
-
-    toggleHideShowElements(contentToChange);
-
-    for(let index in quiz.questions) {
+    for(let index in questions) {
         let questionProgress = document.createElement("input");
         questionProgress.setAttribute("type","checkbox");
         questionProgress.setAttribute("name","questionOverview");
@@ -100,9 +92,59 @@ function startQuiz(startFormElements) {
         questionProgress.setAttribute("disabled","");
         document.getElementById("questionsOverview").append(questionProgress);
     }
-    console.log( document.getElementById("countOverview"));
+
+}
+
+function randomNumberBetweenTwoValues(min,max) {
+    return Math.floor(Math.random() * (max - min +1) +  min);    
+}
+
+function viewQuestion(questionData) {
+    document.getElementById("quiz__form").innerHTML = "";
+    let randomizeAnswersOrder = randomNumberBetweenTwoValues(0,2);
+    questionData.falseAnswers.splice(randomizeAnswersOrder,0,questionData.correctAnswer);
+    document.getElementById("quiz__form").insertAdjacentHTML('beforeend',
+        `<div class="question">
+        <p>${questionData.question}</p>
+</div>
+<div class="answers">
+    <table class="center">
+        <tr>
+            <td><input type="radio" class="answers" value="${questionData.falseAnswers[0]}"></td>
+            <td><label for="1">1.</label></td>
+            <td><label for="1">${questionData.falseAnswers[0]}</label></td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="answers" value="${questionData.falseAnswers[1]}"></td>
+            <td><label for="2">X.</label></td>
+            <td><label for="2">${questionData.falseAnswers[1]}</label></td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="answers" value="${questionData.falseAnswers[2]}"></td>
+            <td><label for="3">2.</label></td>
+            <td><label for="3">${questionData.falseAnswers[2]}</label></td>
+        </tr>
+    </table>
+</div>`
+    );
+}
+
+function startQuiz(startFormElements) {
+
+    let currentQuestionIndex = 0;
+    let [userName, numberOfQuestions] = getElementsValues(startFormElements);
+
+    let quiz = new Quiz(userName, numberOfQuestions);
+
+    let contentToChange = document.getElementsByClassName("quizContent");
+
+    toggleHideShowElements(contentToChange);
+
+    addQuestionProgressBoxes(quiz.questions);
     
     document.getElementById("countOverview").textContent =`${quiz.getTotalAnsweredQuestions()} / ${quiz.getTotalQuestions()} frågor`;
+
+    viewQuestion(quiz.questions[currentQuestionIndex]);
 
 }
 
@@ -119,6 +161,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+    });
+
+    document.getElementById("quizGame").addEventListener("click", (event) => {
+        if(event.target.className === 'answers') {
+            
+        }
     });
 
 });

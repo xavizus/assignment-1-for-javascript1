@@ -15,4 +15,16 @@ class Question {
 
         this.isCorrectAnswerdFromUser = null;
     }
+
+
+    checkIfanswerIsCorrect(answer){
+        if(this.correctAnswer === answer) {
+            this.isCorrectAnswerdFromUser = true;
+        }
+        else {
+            this.isCorrectAnswerdFromUser = false;
+        }
+
+        return this.isCorrectAnswerdFromUser;
+    }
 }
