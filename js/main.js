@@ -55,96 +55,48 @@ function isElementsValueEmpty(elements) {
 
 }
 
-function toggleHideShowElements(elements, hideClass = "hide", showClass = "show") {
-
-    elements = Array.from(elements);
-
-    for (let element of elements) {
-
-        if (element.classList.contains("hide")) {
-
-            document.getElementById(element.id).classList.remove(hideClass);
-
-            document.getElementById(element.id).classList.add(showClass);
-
-        } else {
-
-            document.getElementById(element.id).classList.add(hideClass);
-
-            document.getElementById(element.id).classList.remove(showClass);
-
-        }
-
-    }
-
-}
-
-function addQuestionProgressBoxes(questions) {
-
-    for (let index in questions) {
-        let questionProgress = document.createElement("input");
-        questionProgress.setAttribute("type", "checkbox");
-        questionProgress.setAttribute("name", "questionOverview");
-        questionProgress.setAttribute("id", `question-${index}`);
-        questionProgress.setAttribute("value", index);
-        questionProgress.setAttribute("disabled", "");
-        document.getElementById("questionsOverview").append(questionProgress);
-    }
-
-}
-
-function randomNumberBetweenTwoValues(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function viewQuestion(questionData) {
-    document.getElementById("quiz__form").innerHTML = "";
-    let randomizeAnswersOrder = randomNumberBetweenTwoValues(0, 2);
-    questionData.falseAnswers.splice(randomizeAnswersOrder, 0, questionData.correctAnswer);
-    document.getElementById("quiz__form").insertAdjacentHTML('beforeend',
-        `<div class="question">
-        <p>${questionData.question}</p>
-</div>
-<div class="answers">
-    <table class="center">
-        <tr>
-            <td><input type="radio" class="answers" value="${questionData.falseAnswers[0]}"></td>
-            <td><label for="1">1.</label></td>
-            <td><label for="1">${questionData.falseAnswers[0]}</label></td>
-        </tr>
-        <tr>
-            <td><input type="radio" class="answers" value="${questionData.falseAnswers[1]}"></td>
-            <td><label for="2">X.</label></td>
-            <td><label for="2">${questionData.falseAnswers[1]}</label></td>
-        </tr>
-        <tr>
-            <td><input type="radio" class="answers" value="${questionData.falseAnswers[2]}"></td>
-            <td><label for="3">2.</label></td>
-            <td><label for="3">${questionData.falseAnswers[2]}</label></td>
-        </tr>
-    </table>
-</div>`
-    );
-}
-
 function startQuiz(startFormElements) {
 
-    let currentQuestionIndex = 0;
     let [userName, numberOfQuestions] = getElementsValues(startFormElements);
 
     let quiz = new Quiz(userName, numberOfQuestions);
 
     let contentToChange = document.getElementsByClassName("quizContent");
 
-    toggleHideShowElements(contentToChange);
+    quiz.toggleHideShowElements(contentToChange);
 
-    addQuestionProgressBoxes(quiz.questions);
+    quiz.viewQuestion();
 
-    document.getElementById("countOverview").textContent = `${quiz.getTotalAnsweredQuestions()} / ${quiz.getTotalQuestions()} frågor`;
+    document.getElementById("sidebox").addEventListener("click", (event) => {
 
-    viewQuestion(quiz.questions[currentQuestionIndex]);
+        if (event.target.id === 'next' || event.target.id === 'previous') {
+            let DOMForm = document.getElementById("quiz__form");
+            let radioChecked = quiz.getDOMElementThatsCheckedFromForm(DOMForm);
+
+            if(radioChecked) {
+                if(event.target.id === 'next') {
+                    quiz.controllIfAnswerIsCorrect(radioChecked);
+                    quiz.changeQuestion(1);
+                } 
+                else {
+                    quiz.controllIfAnswerIsCorrect(radioChecked);
+                    quiz.changeQuestion(-1);
+                }
+            } 
+            else {
+                if(event.target.id === 'next') {
+                    quiz.changeQuestion(1);
+                } 
+                else {
+                    quiz.changeQuestion(-1);
+                }
+
+            }
+        } 
+    });
 
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -159,12 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-    });
-
-    document.getElementById("quizGame").addEventListener("click", (event) => {
-        if (event.target.className === 'answers') {
-
-        }
     });
 
 });
