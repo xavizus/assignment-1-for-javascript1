@@ -1,7 +1,7 @@
 /*
-|---------------
-| Body layout
-|---------------
+|----------
+|= Elements
+|----------
 */
 body {
     width:100%;
@@ -18,11 +18,13 @@ body {
 |------------
 */
 
-.header, .content, .sidebox, .footer {
+.header, .content, #sidebox, .footer {
     background-color: #484848;
     margin: 15px;
     text-align: center;
     border-radius: 5px;
+    padding:5px;
+    overflow: none;
 }
 
 .header {
@@ -33,7 +35,8 @@ body {
     grid-area: content;
 }
 
-.sidebox {
+
+#sidebox {
     grid-area: sidebox;
 }
 
@@ -42,17 +45,18 @@ body {
     background-color: inherit;
 }
 
-
 .container {
-    margin:0px auto 0px;
+    margin: 0px auto 0px;
     padding:0px;
     width: 80%;
     display: grid;
     grid-template-areas: 
-    "header header header"
-    "content content sidebox"
-    "content content sidebox"
-     " . footer . ";
+    "header header header header"
+    "content content content sidebox"
+    "content content content sidebox"
+     "footer footer footer footer";
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto auto;
     border-bottom:5px solid #C0C0C0;
     border-left: 5px solid #C0C0C0;
     border-right: 5px solid #C0C0C0;
@@ -60,13 +64,20 @@ body {
     border-bottom-right-radius: 5px;
 }
 
+
+/*
+|----------
+|= Responsive for mobiles. 
+|----------
+*/
 @media only screen and (max-width:500px) {
     .container {
         grid-template-areas: 
         "header"
         "content"
         "sidebox"
-         "footer";
+        "footer";
+        grid-template-columns: auto;
     }
 }
 
@@ -93,4 +104,87 @@ table.center {
 
 .answer {
     font-weight: bold;
+}
+
+
+/*
+|-------------
+|= Menu
+|-------------
+*/
+
+ul.menu {
+    list-style-type: none;
+    padding: 0;
+    display:inline-block;
+}
+
+/*
+|-------------
+|=Features
+|-------------
+*/
+.hide {
+    max-height:0px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 
+    1s visibility step-end,            
+    1s pointer-events step-end,
+    1s max-height step-end,
+    1s opacity ease;
+}
+
+.show {
+    max-height: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition: 
+    1s visibility step-start,
+    1s pointer-events step-start,
+    1s max-height step-start,
+    1s opacity ease;
+    transition-delay: 1s;
+}
+
+#next {
+    /*
+    Found an article that made it easier to use svg-files and change it's color.
+    https://css-tricks.com/change-color-of-svg-on-hover/
+    */
+    background-image: url("./../images/arrow.svg");
+    height: 50px;
+    width: 50px;
+
+    /* 
+    I used https://codepen.io/sosuke/pen/Pjoqqp to genereate color for the svg file with filters.
+    */
+}
+
+#next:hover {
+    /*background:#C0C0C0;*/
+    filter: invert(94%) sepia(0%) saturate(0%) hue-rotate(239deg) brightness(80%) contrast(102%);
+}
+
+#next:active {
+    /*background: #D6898E;*/
+    filter: invert(71%) sepia(8%) saturate(1937%) hue-rotate(307deg) brightness(85%) contrast(96%);
+}
+
+
+#previous {
+    transform: scaleX(-1);
+    height: 50px;
+    width: 50px;
+    background-image: url("./../images/arrow.svg");
+}
+
+#previous:hover {
+    /*background:#C0C0C0;*/
+    filter: invert(94%) sepia(0%) saturate(0%) hue-rotate(239deg) brightness(80%) contrast(102%);
+}
+
+#previous:active {
+    /*background: #D6898E;*/
+    filter: invert(71%) sepia(8%) saturate(1937%) hue-rotate(307deg) brightness(85%) contrast(96%);
 }

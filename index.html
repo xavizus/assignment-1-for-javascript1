@@ -16,39 +16,83 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome to the Game!</h1>
+            <h1>Välkommen till Quiz-spelet!</h1>
         </div>
 
         <div class="content">
-            <div class="currentQuestion">
-                <div class="question">
-                    <p>Test fråga</p>
-                </div>
-            </div>
-            <div class="answers">
-                <table class="center">
-                    <tr>
-                        <td><input type="radio" name="answers" id="1" value=""></td>
-                        <td><label for="1">1.</label></td>
-                        <td><label for="1" id="answer-1" class="answer">Test 1</label></td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="answers" id="2" value=""></td>
-                        <td><label for="2">X.</label></td>
-                        <td><label for="2" id="answer-2" class="answer">Test 2</label></td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="answers" id="3" value=""></td>
-                        <td><label for="3">2.</label></td>
-                        <td><label for="3" id="answer-3" class="answer">Test 3</label></td>
-                    </tr>
-                </table>
-            </div>
-            <p>Test paragraph</p>
-        </div>
+            <!-- Start form -->
 
-        <div class="sidebox">
-            <p>sidebox</p>
+            <div id="start" class="quizContent">
+                <p>Varmt välkommen till Quiz-spelet för unga. Frågorna är framtagna för specifikt barn mellan 4 och 10
+                    år.</p>
+                <p>För att delta, skriv in ditt namn och hur många frågor du önskar få i quizen.</p>
+                <form name="start_form">
+                    <table class="center">
+                        <tr>
+                            <td>
+                                <label for="name">Ditt namn:</label>
+                            </td>
+                            <td><input id="name" class="start_Form" placeholder="Skriv ditt namn här" required></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="sumOfQuestions">Antal frågor</label>
+                            </td>
+                            <td>
+                                <input type="number" id="sumOfQuestions" class="start_Form" min="1" max="10" value="1" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button id="startTheQuiz" type="button">Starta Quiz</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+
+            <!-- Question form -->
+            <div id="quizGame" class="quizContent hide">
+                    <form name="quiz_form">
+                            <div class="question">
+                                    <p>I filmen Insidan Ut (2015) finns det fem karaktärer som är baserad på känslor. Vad heter
+                                        karaktären som alltid är glad?</p>
+                            </div>
+                            <div class="answers">
+                                <table class="center">
+                                    <tr>
+                                        <td><input type="radio" name="answers" id="1" value=""></td>
+                                        <td><label for="1">1.</label></td>
+                                        <td><label for="1" id="answer-1" class="answer">Test 1</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="answers" id="2" value=""></td>
+                                        <td><label for="2">X.</label></td>
+                                        <td><label for="2" id="answer-2" class="answer">Test 2</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" name="answers" id="3" value=""></td>
+                                        <td><label for="3">2.</label></td>
+                                        <td><label for="3" id="answer-3" class="answer">Test 3</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        <div id="sidebox" class="hide quizContent">
+            <h2>Meny</h2>
+            <ul class="menu">
+                <li id="next"></li>
+                <li id="previous"></li>
+            </ul>
+            <div id="questionsOverview">
+                <p>Du har svarat på: <span id="countOverview"></span></p>
+            </div>
+            <br>
+            <div>
+                <button id="correctAnswers">Rätta svar</button>
+            </div>
         </div>
 
         <div class="footer">
