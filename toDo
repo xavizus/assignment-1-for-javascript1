@@ -1,4 +1,10 @@
 2019-09-21:
-    ☐ Need to change behaviour of showing each question. \ 
+    ✔ Need to change behaviour of showing each question. \ @done(19-09-23 21:17)
     When a user have checked a radio, and then change question and change back to previous question, that radio button need to be checked.
     File Quiz.js Line 104
+2019-09-23:
+    ☐ Need to present the results to the user. 
+    ☐ I need to do a rework of the check of correction-method, probably.
+    Not sure if I got the required solution for the requierment at file Quiz.js, line 50 and 60. \ 
+    Functions `controllIfAnswerIsCorrect``and `getDOMElementThatsCheckedFromForm`
+    `Klassen ska ha en correct-metod, som tar en array som parameter. Arrayen ska innehålla de DOM-element som hör till frågan och kontrollera vilka alternativ som är korrekt ifyllda.`

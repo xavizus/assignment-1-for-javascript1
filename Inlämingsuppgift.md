@@ -1,7 +1,7 @@
 # Inlämingsuppgift
 
 **För godkänt:** 
-- [ ] Skriv en fungerande Quiz-applikation. Visa på sidan hur många frågor som är besvarade.
+- [x] Skriv en fungerande Quiz-applikation. Visa på sidan hur många frågor som är besvarade.
 - [x] Låt användaren bestämma hur många frågor som ska visas.
 - [x] Skriv klassen Quiz. Den ska hålla reda på användarens namn, frågorna som ingår och hur många frågor som har besvarats korrekt/felaktigt.
 - [x] Skriv klassen Question. Den ska hålla reda på frågekategori, fråga, svarsalternativ och om svarsalternativet är korrekt eller inte. (Hur kan vi lösa det?)
@@ -9,7 +9,7 @@
 
 **För Väl Godkänt:**
 - [ ] VG: Klassen ska ha en correct-metod, som tar en array som parameter. Arrayen ska innehålla de DOM-element som hör till frågan och kontrollera vilka alternativ som är korrekt ifyllda.
-- [ ] VG: Visa en fråga i taget, låt användaren bläddra mellan dem.
+- [x] VG: Visa en fråga i taget, låt användaren bläddra mellan dem.
 - [x] VG: Responsiv design
 
 ## Vad du behöver visa för att uppfylla kraven:
