@@ -5,12 +5,10 @@ class Quiz {
         try {
             if (isNaN(sumOfQuestionsToAdd)) {
                 throw new Error(`sumOfQuestionsToAdd is not a number! You gave ${sumOfQuestionsToAdd}`);
-            }
-            else if (sumOfQuestionsToAdd === "") {
+            } else if (sumOfQuestionsToAdd === "") {
                 throw new Error(`sumOfQuestionsToAdd is empty!`);
             }
-        }
-        catch (error) {
+        } catch (error) {
             console.error(error);
             console.log("Setting sumOfQuestionsToAdd to value: 1");
             sumOfQuestionsToAdd = 1;
@@ -36,8 +34,7 @@ class Quiz {
                     this.questions.push(new Question(category, questionData.question, questionData.wrongAlternatives, questionData.correctAnswer));
                     this.questionsGuessedByUser.push(null);
                     countOfAddedQuestions++;
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -106,8 +103,7 @@ class Quiz {
                 throw Error("You tried to input an index outside of the question array scope! Defaulting to currentQuestionIndex: ");
             }
             questionData = this.questions[questionIndex];
-        }
-        catch (error) {
+        } catch (error) {
             console.error(error + this.currentQuestionIndex);
             questionData = this.questions[this.currentQuestionIndex];
         }
@@ -193,13 +189,18 @@ class Quiz {
          */
         document.getElementById("questionIndex").appendChild(textToBeAdded);
 
-
+        /**
+         * The question that will be shown.
+         */
         let questionToBeAsked = `
             <div class="question">
                 <p>${questionData.question}</p>
             </div>
         `;
 
+        /**
+         * The start tags of the question form
+         */
         let questionForm = `
         <div class="answers">
             <table class="center">
@@ -208,30 +209,43 @@ class Quiz {
         let countAnswers = 0;
         for (let answerToShow of answersToShow) {
             questionForm += `<tr>`;
+            /**
+             * Check if the user have input an answer before, and match that answer to the answer which will be shown.
+             * If it's a match, automagically check that radio button
+             * else, don't check it.
+             */
             if (questionData.guessedAnswerFromUser && questionData.guessedAnswerFromUser === answerToShow) {
                 questionForm += `<td><input type="radio" class="answers" name="answers" value="${answerToShow}" checked="true"></td>`;
-            }
-            else {
+            } else {
                 questionForm += `<td><input type="radio" class="answers" name="answers" value="${answerToShow}"></td>`;
             }
 
+            /**
+             * find out which number/letter to use
+             */
             let numberToView = "";
             switch (countAnswers) {
-                case 0: {
-                    numberToView = "1";
-                    break;
-                }
-                case 1: {
-                    numberToView = "X";
-                    break;
-                }
+                case 0:
+                    {
+                        numberToView = "1";
+                        break;
+                    }
+                case 1:
+                    {
+                        numberToView = "X";
+                        break;
+                    }
 
-                default: {
-                    numberToView = "2";
-                }
+                default:
+                    {
+                        numberToView = "2";
+                    }
 
             }
 
+            /**
+             * Adds lables to the answers
+             */
             questionForm += `
                     <td><label for="${numberToView}">${numberToView}.</label></td>
                     <td><label for="${numberToView}">${answerToShow}</label></td>
@@ -241,10 +255,14 @@ class Quiz {
 
         }
 
+        /**
+         * End tags of the form.
+         */
+
         questionForm += `</table></div>`;
 
         /*
-            This could open up for XSS, though it's only trusted data. Therefore okey to use.
+            This could open up for XSS, though it's only trusted data that's input. Therefore okey to use.
         */
         document.getElementById("quiz__form").insertAdjacentHTML('beforeend',
             questionToBeAsked +
@@ -264,8 +282,7 @@ class Quiz {
         if ((proposedQuestionIndex >= 0 && proposedQuestionIndex < this.sumOfQuestions)) {
             this.currentQuestionIndex = proposedQuestionIndex;
             this.viewQuestion(this.currentQuestionIndex);
-        }
-        else {
+        } else {
             console.log(`Could not do the change question to index ${proposedQuestionIndex}`);
         }
     }
@@ -287,8 +304,7 @@ class Quiz {
 
                 document.getElementById(element.id).classList.add(showClass);
 
-            }
-            else {
+            } else {
 
                 document.getElementById(element.id).classList.add(hideClass);
 

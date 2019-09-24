@@ -3,18 +3,20 @@
 |= Elements
 |----------
 */
+
 body {
-    width:100%;
+    width: 100%;
     background-color: #000;
-    color:#ccc;
-    margin:0px;
-    padding:0px;
-    font:13px Yanone Kaffeesatz,arial,helvetica,sans-serif;
+    color: #ccc;
+    margin: 0px;
+    padding: 0px;
+    font: 13px Yanone Kaffeesatz, arial, helvetica, sans-serif;
 }
 
 td {
     text-align: left;
 }
+
 
 /*
 |------------
@@ -22,12 +24,15 @@ td {
 |------------
 */
 
-.header, .content, #sidebox, .footer {
+.header,
+.content,
+#sidebox,
+.footer {
     background-color: #484848;
     margin: 15px;
     text-align: center;
     border-radius: 5px;
-    padding:5px;
+    padding: 5px;
     overflow: none;
 }
 
@@ -38,7 +43,6 @@ td {
 .content {
     grid-area: content;
 }
-
 
 #sidebox {
     grid-area: sidebox;
@@ -51,17 +55,13 @@ td {
 
 .container {
     margin: 0px auto 0px;
-    padding:0px;
+    padding: 0px;
     width: 80%;
     display: grid;
-    grid-template-areas: 
-    "header header header header"
-    "content content content sidebox"
-    "content content content sidebox"
-     "footer footer footer footer";
+    grid-template-areas: "header header header header" "content content content sidebox" "content content content sidebox" "footer footer footer footer";
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: auto auto auto auto;
-    border-bottom:5px solid #C0C0C0;
+    border-bottom: 5px solid #C0C0C0;
     border-left: 5px solid #C0C0C0;
     border-right: 5px solid #C0C0C0;
     border-bottom-left-radius: 5px;
@@ -74,16 +74,14 @@ td {
 |= Responsive for mobiles. 
 |----------
 */
+
 @media only screen and (max-width:500px) {
     .container {
-        grid-template-areas: 
-        "header"
-        "content"
-        "sidebox"
-        "footer";
+        grid-template-areas: "header" "content" "sidebox" "footer";
         grid-template-columns: auto;
     }
 }
+
 
 /*
 |---------------
@@ -92,7 +90,7 @@ td {
 */
 
 .answers {
-    margin:0px auto 0px;
+    margin: 0px auto 0px;
     float: none;
 }
 
@@ -110,6 +108,7 @@ table.center {
     font-weight: bold;
 }
 
+
 /*
 |-------------
 |= Menu
@@ -119,35 +118,33 @@ table.center {
 ul.menu {
     list-style-type: none;
     padding: 0;
-    display:inline-block;
+    display: inline-block;
 }
+
 
 /*
 |-------------
 |=Features
 |-------------
 */
+
 .hide {
-    max-height:0px;
+    max-height: 0px;
     opacity: 0;
     visibility: hidden;
-    transition: 
-    1s visibility step-end,            
-    1s pointer-events step-end,
-    1s max-height step-end,
-    1s opacity ease;
+    transition: 1s visibility step-end, 1s pointer-events step-end, 1s max-height step-end, 1s opacity ease;
 }
 
 .show {
     max-height: 100%;
     opacity: 1;
     visibility: visible;
-    transition: 
-    1s visibility step-start,
-    1s pointer-events step-start,
-    1s max-height step-start,
-    1s opacity ease;
+    transition: 1s visibility step-start, 1s pointer-events step-start, 1s max-height step-start, 1s opacity ease;
     transition-delay: 1s;
+}
+
+#errorMessage {
+    color: #D6898E;
 }
 
 #next {
@@ -158,7 +155,6 @@ ul.menu {
     background-image: url("./../images/arrow.svg");
     height: 50px;
     width: 50px;
-
     /* 
     I used https://codepen.io/sosuke/pen/Pjoqqp to genereate color for the svg file with filters.
     */
@@ -173,7 +169,6 @@ ul.menu {
     /*background: #D6898E;*/
     filter: invert(71%) sepia(8%) saturate(1937%) hue-rotate(307deg) brightness(85%) contrast(96%);
 }
-
 
 #previous {
     transform: scaleX(-1);
