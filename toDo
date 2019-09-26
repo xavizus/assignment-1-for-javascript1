@@ -3,12 +3,13 @@
     When a user have checked a radio, and then change question and change back to previous question, that radio button need to be checked.
     File Quiz.js Line 104
 2019-09-23:
-    ☐ Need to present the results to the user. 
-    ☐ I need to do a rework of the check of correction-method, probably, asking the lecturer first.
+    ✔ Need to present the results to the user. @done(19-09-26 20:07)
+    ✔ I need to do a rework of the check of correction-method, probably, asking the lecturer first. @done(19-09-26 20:08)
     Not sure if I got the required solution for the requierment at file Quiz.js, line 50 and 60. \ 
     Functions `controllIfAnswerIsCorrect``and `getDOMElementThatsCheckedFromForm`
     `Klassen ska ha en correct-metod, som tar en array som parameter. Arrayen ska innehålla de DOM-element som hör till frågan och kontrollera vilka alternativ som är korrekt ifyllda.`
 2019-09-24:
-    ☐ Change the way the questions are shown.
+    ✘ Change the way the questions are shown. @cancelled(19-09-26 20:07)
     Maybe a solution
     https://www.w3schools.com/howto/howto_js_slideshow.asp
+    Changed my mind about this one. Too much effort to fix this.

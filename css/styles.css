@@ -10,7 +10,7 @@ body {
     color: #ccc;
     margin: 0px;
     padding: 0px;
-    font: 13px Yanone Kaffeesatz, arial, helvetica, sans-serif;
+    font: 1em Yanone Kaffeesatz, arial, helvetica, sans-serif;
 }
 
 td {
@@ -128,19 +128,40 @@ ul.menu {
 |-------------
 */
 
+.bold {
+    font-weight: bold;
+}
+#quiz__form table.center {
+    border-collapse: collapse;
+}
+
+#results table,
+#results td ,
+#results th {
+    text-align: center;
+    border: 1px solid #FFF;
+    padding:5px;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+color:tomato;
+}
+
 .hide {
-    max-height: 0px;
     opacity: 0;
     visibility: hidden;
-    transition: 1s visibility step-end, 1s pointer-events step-end, 1s max-height step-end, 1s opacity ease;
+    transition: 0.5s visibility step-end, 0.5s pointer-events step-end, 0.5s max-height step-end, 0.5s opacity ease;
 }
 
 .show {
-    max-height: 100%;
     opacity: 1;
     visibility: visible;
-    transition: 1s visibility step-start, 1s pointer-events step-start, 1s max-height step-start, 1s opacity ease;
-    transition-delay: 1s;
+    transition: 0.5s visibility step-start, 0.5s pointer-events step-start, 0.5s max-height step-start, 0.5s opacity ease;
+    transition-delay: 0.6s;
 }
 
 #errorMessage {

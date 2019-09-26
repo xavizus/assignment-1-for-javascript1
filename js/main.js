@@ -1,15 +1,6 @@
 /**
- * get total questions that exists.
- */
-
-function getTotalQuestionsThatExists() {
-
-}
-
-/**
  * Return the values of an array of DOM-elements.
  */
-
 function getElementsValues(elements) {
     try {
         //For safty reason, always convert DOM-elements to an array.
@@ -32,8 +23,7 @@ function getElementsValues(elements) {
 /**
  * Checks if the element value is empty or not. 
  */
-
-function isAllElementsValueFilled(elements) {
+function areAllElementsValueFilled(elements) {
     let results = getElementsValues(elements);
     if (results === false) {
         return false;
@@ -60,6 +50,9 @@ function startQuiz(start_formElements, questionsData) {
     // We know that there is only two inputsfields at the start_form
     let [userName, numberOfQuestions] = getElementsValues(start_formElements);
 
+    
+    setTimeout(()=> {
+    },1000);
     let quiz = new Quiz(userName, numberOfQuestions, questionsData);
 
     //get all class names
@@ -68,8 +61,12 @@ function startQuiz(start_formElements, questionsData) {
     //hides elements that's shown, and show elements that are hidden.
     quiz.toggleHideShowElements(contentToChange);
 
-    //view the first question
-    quiz.viewQuestion();
+    //for transitions reasons.
+    setTimeout(()=> {
+        document.getElementById("start").innerHTML = "";
+        //view the first question
+        quiz.viewQuestion();
+    },600);
 
     //listen after all click events
     document.getElementById("quizGame").addEventListener("click", (event) => {
@@ -85,6 +82,10 @@ function startQuiz(start_formElements, questionsData) {
             if (quiz.getTotalAnsweredQuestions() === quiz.getTotalQuestions()) {
                 document.getElementById("correctAnswers").disabled = false;
             }
+        }
+
+        if(event.target.id === "restart") {
+            quiz.restartQuizGame();
         }
     });
 
@@ -110,34 +111,38 @@ function startQuiz(start_formElements, questionsData) {
 
         //check if correctAnswer button is pressed.
         if (event.target.id === 'correctAnswers') {
-            console.log(quiz.questionsGuessedByUser);
+            quiz.viewResults();
         }
     });
 }
-
 
 /**
  * Run when the event DOMContentLoaded is found.
  */
 document.addEventListener("DOMContentLoaded", async function() {
-    let questionsData
+
+    let questionsData = "";
     try {
         let response = await fetch("./js/questions.json");
         questionsData = await response.json();
     } catch (error) {
         console.error(error);
+        alert(`${error}\n You need to run this code with a server. Ex. Live-server.`);
+        document.getElementById("startTheQuiz").disabled = true;
     }
 
+    
     /**
      *  Run when the event click is found at the element startTheQuiz
      */
-    document.getElementById("startTheQuiz").addEventListener("click", () => {
+    document.getElementById("start").addEventListener("click", (event) => {
 
-        // retrive all elements in the start_form
+        if(event.target.id === "startTheQuiz") {
+             // retrive all elements in the start_form
         let start_formElements = document.forms["start_form"].getElementsByClassName("start_Form");
 
         // if all elements in the form filled.
-        if (isAllElementsValueFilled(start_formElements)) {
+        if (areAllElementsValueFilled(start_formElements)) {
             // variable used for readability reasons.
             const sumOfQuestionsField = 1;
 
@@ -164,5 +169,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 document.getElementById("errorMessage").classList.toggle("hide");
             }, 5000);
         }
+        }
+       
     });
 });

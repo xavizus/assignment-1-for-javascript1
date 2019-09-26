@@ -31,7 +31,9 @@ class Quiz {
         for (let category in categories) {
             for (let questionData of categories[category]) {
                 if (countOfAddedQuestions < this.sumOfQuestions) {
-                    this.questions.push(new Question(category, questionData.question, questionData.wrongAlternatives, questionData.correctAnswer));
+                    this.questions.push(
+                        new Question(category, questionData.question, questionData.wrongAlternatives, questionData.correctAnswer)
+                        );
                     this.questionsGuessedByUser.push(null);
                     countOfAddedQuestions++;
                 } else {
@@ -54,7 +56,7 @@ class Quiz {
     Find the selected DOM-element from the DOMForm and check if that answer is correct or not.
     */
     correctTheAnswerGivenInTheForm(DOMForm) {
-        console.log(typeof(DOMForm));
+        //console.log(DOMForm);
         let radioChecked = "";
         for (let indexOfRadio = 0; indexOfRadio < DOMForm.length; indexOfRadio++) {
             if (DOMForm[indexOfRadio].checked) {
@@ -156,7 +158,7 @@ class Quiz {
          */
         let currentQuestionIndex = `
             <div>
-                <p>${this.userName} är på fråga ${(this.currentQuestionIndex+1)} av ${this.sumOfQuestions}</p>
+                <p><span class="bold">${this.userName}</span> är på fråga ${(this.currentQuestionIndex+1)} av ${this.sumOfQuestions}</p>
             </div>
         `;
 
@@ -169,7 +171,7 @@ class Quiz {
 
         currentQuestionIndex = `
         <div>
-            <p id="questionIndex"></p>
+            <p id="questionIndex"><span id="userName" class="bold"> </span> är på fråga ${(this.currentQuestionIndex+1)} av ${this.sumOfQuestions}</p>
         </div>
         `;
 
@@ -181,12 +183,12 @@ class Quiz {
         /**
          * We create our string with the unsafe data
          */
-        let textToBeAdded = `${this.userName} är på fråga ${(this.currentQuestionIndex+1)} av ${this.sumOfQuestions}`;
+        let userName = `${this.userName}`;
 
         /**
          * We create a textNode which phrases the string as a string, and not HTML.
          */
-        textToBeAdded = document.createTextNode(textToBeAdded);
+        userName = document.createTextNode(userName);
 
         /**
          * We try to find the id questionIndex and append it, with our textNode.
@@ -194,7 +196,7 @@ class Quiz {
          * <a href="localhost:5500">Tryck Här</a> är på fråga 1 av 10
          * It's no more phrased as HTML-code.
          */
-        document.getElementById("questionIndex").appendChild(textToBeAdded);
+        document.getElementById("userName").appendChild(userName);
 
         /**
          * The question that will be shown.
@@ -215,17 +217,6 @@ class Quiz {
 
         let countAnswers = 0;
         for (let answerToShow of answersToShow) {
-            questionForm += `<tr>`;
-            /**
-             * Check if the user have input an answer before, and match that answer to the answer which will be shown.
-             * If it's a match, automagically check that radio button
-             * else, don't check it.
-             */
-            if (questionData.guessedAnswerFromUser && questionData.guessedAnswerFromUser === answerToShow) {
-                questionForm += `<td><input type="radio" class="answers" name="answers" value="${answerToShow}" checked="true"></td>`;
-            } else {
-                questionForm += `<td><input type="radio" class="answers" name="answers" value="${answerToShow}"></td>`;
-            }
 
             /**
              * find out which number/letter to use
@@ -248,6 +239,19 @@ class Quiz {
                         numberToView = "2";
                     }
 
+            }
+
+
+            questionForm += `<tr>`;
+            /**
+             * Check if the user have input an answer before, and match that answer to the answer which will be shown.
+             * If it's a match, automagically check that radio button
+             * else, don't check it.
+             */
+            if (questionData.guessedAnswerFromUser && questionData.guessedAnswerFromUser === answerToShow) {
+                questionForm += `<td><input type="radio" id="${numberToView}" class="answers" name="answers" value="${answerToShow}" checked="true"></td>`;
+            } else {
+                questionForm += `<td><input type="radio" id="${numberToView}" class="answers" name="answers" value="${answerToShow}"></td>`;
             }
 
             /**
@@ -320,6 +324,87 @@ class Quiz {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+    viewResults() {
+        document.getElementById("quiz__form").innerHTML = "";
+
+        let resultsTable = `
+        <table id="results" class="center">
+        <tr>
+            <th class="center">Question</th>
+            <th class="center">Correct Answer</th>
+            <th class="center">Your answer</th>
+        </tr>
+        `;
+
+        for(let questionData of this.questions) {
+            resultsTable += `
+            <tr> 
+                <td class="center">
+                ${questionData.question}
+                </td>
+                <td class="center">
+                ${questionData.correctAnswer}
+                </td>
+                `;
+
+            if(questionData.isCorrectAnswerdFromUser) {
+                resultsTable += `
+                <td class="center correct">${questionData.guessedAnswerFromUser}</td>
+                `;
+            }else {
+                resultsTable += `
+                <td class="center wrong">${questionData.guessedAnswerFromUser}</td>
+                `;
+            }
+            resultsTable+= `</tr>`;
+        }
+
+        resultsTable +="</table>";
+
+        let restartButton = `<button id="restart" type="button">Starta om</button>`;
+
+        document.getElementById("quiz__form").innerHTML = resultsTable + restartButton;
+
+    }
+
+    restartQuizGame() {
+        document.getElementById("quizGame").removeEventListener("click",()=>{});
+        document.getElementById("sidebox").removeEventListener("click",()=>{});
+        document.getElementById("quiz__form").innerHTML = "";
+
+        document.getElementById("start").innerHTML = `
+        <p>Varmt välkommen till Quiz-spelet för unga. Frågorna är framtagna för specifikt barn mellan 4 och 10 år.
+                </p>
+                <p>För att delta, skriv in ditt namn och hur många frågor du önskar få i quizen.</p>
+                <form name="start_form">
+                    <table class="center">
+                        <tr>
+                            <td>
+                                <label for="name">Ditt namn:</label>
+                            </td>
+                            <td><input id="name" class="start_Form" placeholder="Skriv ditt namn här" required></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="sumOfQuestions">Antal frågor</label>
+                            </td>
+                            <td>
+                                <input type="number" id="sumOfQuestions" class="start_Form" min="1" max="10" value="1" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button id="startTheQuiz" type="button">Starta Quiz</button></td>
+                        </tr>
+                    </table>
+                </form>
+                <div id="errorMessage" class="hide"></div>
+        `;
+
+        let contentToChange = document.getElementsByClassName("quizContent");
+
+        this.toggleHideShowElements(contentToChange);
+    }
 
 
 }
