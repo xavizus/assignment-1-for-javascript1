@@ -8,7 +8,7 @@
 - [ ] Lämna in projektet som ett git-repo.
 
 **För Väl Godkänt:**
-- [ ] VG: Klassen ska ha en correct-metod, som tar en array som parameter. Arrayen ska innehålla de DOM-element som hör till frågan och kontrollera vilka alternativ som är korrekt ifyllda.
+- [x] VG: Klassen ska ha en correct-metod, som tar en array som parameter. Arrayen ska innehålla de DOM-element som hör till frågan och kontrollera vilka alternativ som är korrekt ifyllda.
 - [x] VG: Visa en fråga i taget, låt användaren bläddra mellan dem.
 - [x] VG: Responsiv design
 

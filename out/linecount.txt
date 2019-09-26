@@ -39,3 +39,25 @@ js\Question.js, code is 22, comment is 0, blank is 12.
 js\questions.js, code is 64, comment is 15, blank is 11.
 js\Quiz.js, code is 124, comment is 12, blank is 38.
 ===============================================================================
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2019-09-24 10:12:38
+count workspace : d:\inlämningsuppgifter\Assignment-1-for-JavaScript1
+total files : 10
+total code lines : 572
+total comment lines : 202
+total blank lines : 148
+
+assignment-1-for-JavaScript1.code-workspace, code is 10, comment is 0, blank is 0.
+css\styles.css, code is 114, comment is 41, blank is 33.
+images\arrow.svg, code is 3, comment is 0, blank is 1.
+index.html, code is 71, comment is 2, blank is 8.
+Inlämingsuppgift.md, code is 21, comment is 0, blank is 5.
+js\main.js, code is 86, comment is 31, blank is 24.
+js\Question.js, code is 22, comment is 8, blank is 9.
+js\questions.js, code is 64, comment is 15, blank is 11.
+js\Quiz.js, code is 167, comment is 104, blank is 57.
+toDo, code is 14, comment is 1, blank is 0.
+===============================================================================

@@ -124,6 +124,76 @@
                     "filename": "js\\Quiz.js"
                 }
             ]
+        },
+        {
+            "version": "0.1.7",
+            "counttime": "2019-09-24 10:12:38",
+            "filesum": 10,
+            "codesum": 572,
+            "commentsum": 202,
+            "blanksum": 148,
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "assignment-1-for-JavaScript1.code-workspace"
+                },
+                {
+                    "blank": 33,
+                    "code": 114,
+                    "comment": 41,
+                    "filename": "css\\styles.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "images\\arrow.svg"
+                },
+                {
+                    "blank": 8,
+                    "code": 71,
+                    "comment": 2,
+                    "filename": "index.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "Inlämingsuppgift.md"
+                },
+                {
+                    "blank": 24,
+                    "code": 86,
+                    "comment": 31,
+                    "filename": "js\\main.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 22,
+                    "comment": 8,
+                    "filename": "js\\Question.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 64,
+                    "comment": 15,
+                    "filename": "js\\questions.js"
+                },
+                {
+                    "blank": 57,
+                    "code": 167,
+                    "comment": 104,
+                    "filename": "js\\Quiz.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 1,
+                    "filename": "toDo"
+                }
+            ]
         }
     ]
 }

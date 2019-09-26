@@ -1,5 +1,13 @@
 /**
- * Return the values of an array.
+ * get total questions that exists.
+ */
+
+function getTotalQuestionsThatExists() {
+
+}
+
+/**
+ * Return the values of an array of DOM-elements.
  */
 
 function getElementsValues(elements) {
@@ -25,7 +33,7 @@ function getElementsValues(elements) {
  * Checks if the element value is empty or not. 
  */
 
-function isAnyElementsValueEmpty(elements) {
+function isAllElementsValueFilled(elements) {
     let results = getElementsValues(elements);
     if (results === false) {
         return false;
@@ -43,7 +51,7 @@ function isAnyElementsValueEmpty(elements) {
  * Starts the quiz
  */
 
-function startQuiz(start_formElements) {
+function startQuiz(start_formElements, questionsData) {
 
     // Make sure the correctAnswer button is disabled
     document.getElementById("correctAnswers").disabled = true;
@@ -52,7 +60,7 @@ function startQuiz(start_formElements) {
     // We know that there is only two inputsfields at the start_form
     let [userName, numberOfQuestions] = getElementsValues(start_formElements);
 
-    let quiz = new Quiz(userName, numberOfQuestions);
+    let quiz = new Quiz(userName, numberOfQuestions, questionsData);
 
     //get all class names
     let contentToChange = document.getElementsByClassName("quizContent");
@@ -69,16 +77,9 @@ function startQuiz(start_formElements) {
         //if the event matches the classname answers
         if (event.target.className === 'answers') {
             // get all elements inside the elementid.
-            let DOMForm = document.getElementById("quiz__form");
-
+            let DOMForm = document.getElementById("quiz__form").getElementsByClassName("answers");
             // look for a radio input. Returns the radio input element if checked, else false.
-            let radioChecked = quiz.getDOMElementThatsCheckedFromForm(DOMForm);
-            if (radioChecked) {
-                //check if the radio DOM-element is correct.
-                quiz.controllIfAnswerIsCorrect(radioChecked);
-                //update the total answered questions.
-                quiz.updateAnsweredQuestions();
-            }
+            quiz.correctTheAnswerGivenInTheForm(DOMForm);
 
             //if we have answered all the questions in the quiz, enable the correctAnswers button.
             if (quiz.getTotalAnsweredQuestions() === quiz.getTotalQuestions()) {
@@ -115,23 +116,49 @@ function startQuiz(start_formElements) {
 }
 
 
+/**
+ * Run when the event DOMContentLoaded is found.
+ */
+document.addEventListener("DOMContentLoaded", async function() {
+    let questionsData
+    try {
+        let response = await fetch("./js/questions.json");
+        questionsData = await response.json();
+    } catch (error) {
+        console.error(error);
+    }
 
-document.addEventListener("DOMContentLoaded", function() {
+    /**
+     *  Run when the event click is found at the element startTheQuiz
+     */
     document.getElementById("startTheQuiz").addEventListener("click", () => {
+
+        // retrive all elements in the start_form
         let start_formElements = document.forms["start_form"].getElementsByClassName("start_Form");
-        if (isAnyElementsValueEmpty(start_formElements)) {
-            const numberOfQestionsFromForm = 1;
-            let numberOfQuestionsFromUser = getElementsValues(start_formElements)[numberOfQestionsFromForm];
+
+        // if all elements in the form filled.
+        if (isAllElementsValueFilled(start_formElements)) {
+            // variable used for readability reasons.
+            const sumOfQuestionsField = 1;
+
+            // get sumOfQuestions value
+            let numberOfQuestionsFromUser = getElementsValues(start_formElements)[sumOfQuestionsField];
+
+            // check if it's outside of our maximum numbers of questions and not lower than 1.
             if (numberOfQuestionsFromUser <= 10 && numberOfQuestionsFromUser > 0) {
-                startQuiz(start_formElements);
+
+                //Let's start our quiz.
+                startQuiz(start_formElements, questionsData);
             } else {
                 console.log("You cannot choose more than 10 question or less than 1 questions!");
             }
         } else {
-            console.log(document.getElementById("errorMessage"));
+            //Add error text.
             document.getElementById("errorMessage").textContent = "One or more fields are not answered!";
+            // toggles classes show and hide.
             document.getElementById("errorMessage").classList.toggle("show");
             document.getElementById("errorMessage").classList.toggle("hide");
+            // Hide error Message after 5 seconds.
             setTimeout(function() {
                 document.getElementById("errorMessage").classList.toggle("show");
                 document.getElementById("errorMessage").classList.toggle("hide");

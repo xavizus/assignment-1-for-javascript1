@@ -1,6 +1,6 @@
 class Quiz {
 
-    constructor(addedName, sumOfQuestionsToAdd) {
+    constructor(addedName, sumOfQuestionsToAdd, questionsData) {
 
         try {
             if (isNaN(sumOfQuestionsToAdd)) {
@@ -13,7 +13,7 @@ class Quiz {
             console.log("Setting sumOfQuestionsToAdd to value: 1");
             sumOfQuestionsToAdd = 1;
         }
-
+        this.questionsData = questionsData;
         this.sumOfQuestions = Number(sumOfQuestionsToAdd);
         this.userName = addedName;
         this.questions = [];
@@ -26,7 +26,7 @@ class Quiz {
     Generate Questions based of how many question the user input.
     */
     generateQuestions() {
-        let categories = questionsData.categories;
+        let categories = this.questionsData.categories;
         let countOfAddedQuestions = 0;
         for (let category in categories) {
             for (let questionData of categories[category]) {
@@ -51,17 +51,24 @@ class Quiz {
     }
 
     /*
-    Find the selected DOM-element from the DOMForm.
+    Find the selected DOM-element from the DOMForm and check if that answer is correct or not.
     */
-    getDOMElementThatsCheckedFromForm(DOMForm) {
+    correctTheAnswerGivenInTheForm(DOMForm) {
+        console.log(typeof(DOMForm));
+        let radioChecked = "";
         for (let indexOfRadio = 0; indexOfRadio < DOMForm.length; indexOfRadio++) {
             if (DOMForm[indexOfRadio].checked) {
-                return DOMForm[indexOfRadio];
+                radioChecked = DOMForm[indexOfRadio];
+                break;
             }
         }
 
-        return false;
-
+        if (radioChecked) {
+            //check if the radio DOM-element is correct.
+            this.controllIfAnswerIsCorrect(radioChecked);
+            //update the total answered questions.
+            this.updateAnsweredQuestions();
+        }
 
     }
 
@@ -298,19 +305,9 @@ class Quiz {
 
         for (let element of elements) {
 
-            if (element.classList.contains("hide")) {
+            document.getElementById(element.id).classList.toggle(hideClass);
 
-                document.getElementById(element.id).classList.remove(hideClass);
-
-                document.getElementById(element.id).classList.add(showClass);
-
-            } else {
-
-                document.getElementById(element.id).classList.add(hideClass);
-
-                document.getElementById(element.id).classList.remove(showClass);
-
-            }
+            document.getElementById(element.id).classList.toggle(showClass);
 
         }
 
